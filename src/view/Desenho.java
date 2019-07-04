@@ -34,13 +34,13 @@ public class Desenho extends javax.swing.JFrame {
         lblCompX = new javax.swing.JLabel();
         lblCompY = new javax.swing.JLabel();
         lblTempo = new javax.swing.JLabel();
-        lblVelX = new javax.swing.JLabel();
-        lblVelY = new javax.swing.JLabel();
+        lblDistancia = new javax.swing.JLabel();
+        lblAlturaMax = new javax.swing.JLabel();
         txtCompX = new javax.swing.JTextField();
         txtCompY = new javax.swing.JTextField();
         txtTempo = new javax.swing.JTextField();
-        txtVelX = new javax.swing.JTextField();
-        txtVelY = new javax.swing.JTextField();
+        txtDistancia = new javax.swing.JTextField();
+        txtAlturaMax = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,11 +72,11 @@ public class Desenho extends javax.swing.JFrame {
         lblTempo.setFont(new java.awt.Font("DejaVu Sans", 0, 14)); // NOI18N
         lblTempo.setText("Tempo:");
 
-        lblVelX.setFont(new java.awt.Font("DejaVu Sans", 0, 14)); // NOI18N
-        lblVelX.setText("Vel. Inicial X:");
+        lblDistancia.setFont(new java.awt.Font("DejaVu Sans", 0, 14)); // NOI18N
+        lblDistancia.setText("Distância:");
 
-        lblVelY.setFont(new java.awt.Font("DejaVu Sans", 0, 14)); // NOI18N
-        lblVelY.setText("Vel. Inicial Y:");
+        lblAlturaMax.setFont(new java.awt.Font("DejaVu Sans", 0, 14)); // NOI18N
+        lblAlturaMax.setText("Altura Máxima:");
 
         txtCompX.setEditable(false);
         txtCompX.setFont(new java.awt.Font("DejaVu Sans", 0, 14)); // NOI18N
@@ -87,11 +87,11 @@ public class Desenho extends javax.swing.JFrame {
         txtTempo.setEditable(false);
         txtTempo.setFont(new java.awt.Font("DejaVu Sans", 0, 14)); // NOI18N
 
-        txtVelX.setEditable(false);
-        txtVelX.setFont(new java.awt.Font("DejaVu Sans", 0, 14)); // NOI18N
+        txtDistancia.setEditable(false);
+        txtDistancia.setFont(new java.awt.Font("DejaVu Sans", 0, 14)); // NOI18N
 
-        txtVelY.setEditable(false);
-        txtVelY.setFont(new java.awt.Font("DejaVu Sans", 0, 14)); // NOI18N
+        txtAlturaMax.setEditable(false);
+        txtAlturaMax.setFont(new java.awt.Font("DejaVu Sans", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout painelLayout = new javax.swing.GroupLayout(painel);
         painel.setLayout(painelLayout);
@@ -108,14 +108,14 @@ public class Desenho extends javax.swing.JFrame {
                         .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblCompY)
                             .addComponent(lblTempo)
-                            .addComponent(lblVelX)
-                            .addComponent(lblVelY))
+                            .addComponent(lblDistancia)
+                            .addComponent(lblAlturaMax))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtCompY, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtTempo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtVelX, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtVelY, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtDistancia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAlturaMax, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         painelLayout.setVerticalGroup(
@@ -135,12 +135,12 @@ public class Desenho extends javax.swing.JFrame {
                     .addComponent(txtTempo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblVelX)
-                    .addComponent(txtVelX, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblDistancia)
+                    .addComponent(txtDistancia, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblVelY)
-                    .addComponent(txtVelY, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblAlturaMax)
+                    .addComponent(txtAlturaMax, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(79, Short.MAX_VALUE))
         );
 
@@ -206,18 +206,18 @@ public class Desenho extends javax.swing.JFrame {
     private javax.swing.JButton btnMostrar;
     private javax.swing.JTextField edtAngulo;
     private javax.swing.JTextField edtVel;
+    private javax.swing.JLabel lblAlturaMax;
     private javax.swing.JLabel lblAngulo;
     private javax.swing.JLabel lblCompX;
     private javax.swing.JLabel lblCompY;
+    private javax.swing.JLabel lblDistancia;
     private javax.swing.JLabel lblTempo;
     private javax.swing.JLabel lblVel;
-    private javax.swing.JLabel lblVelX;
-    private javax.swing.JLabel lblVelY;
     private javax.swing.JPanel painel;
+    private javax.swing.JTextField txtAlturaMax;
     private javax.swing.JTextField txtCompX;
     private javax.swing.JTextField txtCompY;
+    private javax.swing.JTextField txtDistancia;
     private javax.swing.JTextField txtTempo;
-    private javax.swing.JTextField txtVelX;
-    private javax.swing.JTextField txtVelY;
     // End of variables declaration//GEN-END:variables
 }
