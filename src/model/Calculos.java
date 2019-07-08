@@ -3,6 +3,14 @@
  * 1° CALCULE V0X E V0Y
  * 2° CALCULE O TEMPO
  * O RESTO NAO IMPORTA A ORDEM DESDE QUE ESTES ESTEJAM CALCULADOS
+ * Esta classe pode calcular:
+ * componente da velocidade em X
+ * componente da velocidade em Y
+ * tempo
+ * distância (X)
+ * altura máxima (Y)
+ * posição em X
+ * posição em Y
  */
 package model;
 
@@ -12,13 +20,14 @@ package model;
  */
 public class Calculos {
 
+    private final double g; // gravidade
     private double v0; // velocidade inicial
     private double v0x; // componente da velocidade em x
     private double v0y; // componente da velocidade em y
     private double angulo; // ângulo em graus
     private double dx; // distância horizontal
     private double dy; // distância vertical (altura)
-    private double t; // tempo (em segundos)
+    private double t; // tempoVoo (em segundos)
 
     public Calculos() {
         this.v0 = 0;
@@ -28,6 +37,11 @@ public class Calculos {
         this.t = 0;
         this.v0x = 0;
         this.v0y = 0;
+        this.g = 9.8;
+    }
+
+    public double getG() {
+        return g;
     }
 
     public double getV0() {
@@ -96,9 +110,11 @@ public class Calculos {
      */
     public double velocidadeInicialX(double v0, double angulo) {
 
+//        angulo = Math.toRadians(angulo);
         double vEmX = v0 * Math.cos(angulo); // v0x = v0 * cos(angulo)
         this.v0x = vEmX;
         return this.v0x;
+
     }
 
     /**
@@ -111,16 +127,18 @@ public class Calculos {
      */
     public double velocidadeInicialY(double v0, double angulo) {
 
+//        angulo = Math.toRadians(angulo);
         double velocidadeEmY = v0 * Math.sin(angulo); // v0y = v0 * seno(angulo)
         this.v0y = velocidadeEmY;
         return this.v0y;
+
     }
 
-    public double tempo() {
+    public double tempoVoo() {
 
         if (this.v0y != 0) {
 
-            double resultado = (2 * this.v0y) / 9.8; // t = (2 * v0y)/ g
+            double resultado = (2 * this.v0y) / this.g; // t = (2 * v0y)/ g
             this.t = resultado;
             return this.t;
 
@@ -151,11 +169,19 @@ public class Calculos {
      * [Testar os métodos para ver se eles funcionam sem a conversão dos
      * ângulos]
      *
+     *
      * @param v0
      * @param angulo
      * @return
      */
     public double alturaMaxima(double v0, double angulo) {
+
+//        angulo = Math.toRadians(angulo);
+        double resposta;
+        resposta = this.velocidadeInicialY(v0, angulo);
+        resposta = Math.pow(resposta, 2);
+        resposta /= (2 * this.g);
+        return resposta;
 
     }
 
@@ -175,7 +201,7 @@ public class Calculos {
 
         if (this.t != 0 && this.v0y != 0) {
 
-            double posicaoY = (0 + this.v0y * intervaloDeTempo) - ((9.8 * (intervaloDeTempo * intervaloDeTempo)) / 2);
+            double posicaoY = (0 + this.v0y * intervaloDeTempo) - ((this.g * (intervaloDeTempo * intervaloDeTempo)) / 2);
             // y = y0 + v0y*t - (g*t^2)/2
             return posicaoY;
         }
