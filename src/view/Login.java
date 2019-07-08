@@ -130,7 +130,7 @@ public class Login extends javax.swing.JFrame {
 
         if (senha.equals("123") && usuario.equals("ariel")) {
 
-            JFrame tela = new Inicio();
+            JFrame tela = new Calcular();
             tela.setVisible(true);
             this.dispose();
 
