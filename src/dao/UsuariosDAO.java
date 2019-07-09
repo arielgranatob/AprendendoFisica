@@ -63,16 +63,17 @@ public class UsuariosDAO implements InterfaceDAO {
 
     @Override
     public void update(Object obj) {
-        try {
+        try {            
+            int pontos = 10;
             Usuario usuario = (Usuario) obj;
-            sql = "UPDATE usuario SET pontuacaoUsuario = ?  WHERE idUsuario = ?";
+            sql = "UPDATE usuario SET pontuacaoUsuario = pontuacaoUsuario+?  WHERE idUsuario = ?";
             conn = Conexao.conexao();
             PreparedStatement stmt;
             stmt = conn.prepareStatement(sql);
-            stmt.setString(1, "5");
+            stmt.setString(1, String.valueOf(pontos));
             stmt.setString(2, JFrameCalcular.lerSessao());
             stmt.execute();
-            JOptionPane.showMessageDialog(null, "Adicionado 5 pontos ao ID "+JFrameCalcular.lerSessao()+" com sucesso!");
+            JOptionPane.showMessageDialog(null, "O ID "+JFrameCalcular.lerSessao()+" ganhou "+pontos+"!");
 
         } catch (SQLException error) {
             JOptionPane.showMessageDialog(null, "IMPOSSÍVEL EXECUTAR O COMANDO SQL\n" + error);

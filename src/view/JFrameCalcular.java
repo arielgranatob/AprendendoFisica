@@ -223,7 +223,7 @@ public class JFrameCalcular extends javax.swing.JFrame {
             }
         });
 
-        bntAdicionaPonto.setText("+");
+        bntAdicionaPonto.setText("GANHEI");
         bntAdicionaPonto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bntAdicionaPontoActionPerformed(evt);

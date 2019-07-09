@@ -294,7 +294,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="bntAdicionaPonto">
       <Properties>
-        <Property name="text" type="java.lang.String" value="+"/>
+        <Property name="text" type="java.lang.String" value="GANHEI"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntAdicionaPontoActionPerformed"/>
