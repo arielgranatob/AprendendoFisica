@@ -1,7 +1,6 @@
 package ensinandofisica;
 
-import javax.swing.JFrame;
-import view.Login;
+import View.JFrameLogin;
 
 /**
  * Projeto Aprendendo Física. Aplicação com o objetivo de representar uma
@@ -10,12 +9,14 @@ import view.Login;
  * @authors Ariel granato, Cláudio Henrique, Felipe Costa, Gabriel Vidal e
  * Jonathas Costa.
  */
+
+
 public class EnsinandoFisica {
 
     public static void main(String[] args) {
 
-        JFrame view = new Login();
-        view.setVisible(true);
+        JFrameLogin Login = new JFrameLogin();
+        Login.setVisible(true);
 
     }
 

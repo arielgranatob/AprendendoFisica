@@ -20,14 +20,14 @@ import model.Coordenadas;
  *
  * @author ch
  */
-public class Calcular extends javax.swing.JFrame {
+public class JFrameCalcular extends javax.swing.JFrame {
 
     private Calculos calculo;
     private double x, y;
     private double tempo;
     private ArrayList<Coordenadas> lstCoordenadas;
 
-    public Calcular() {
+    public JFrameCalcular() {
         initComponents();
         this.calculo = new Calculos();
         this.x = 0.0;
@@ -295,7 +295,7 @@ public class Calcular extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Arquivo salvo com sucesso!");
 
         } catch (IOException ex) {
-            Logger.getLogger(Calcular.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JFrameCalcular.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, "ERRO. Não foi possível salvar o arquivo");
         }
 
