@@ -1,10 +1,11 @@
 package dao;
 
 import java.util.ArrayList;
+import model.Usuario;
 
 public interface InterfaceDAO {
 
-    public void add(Object obj);
+    public void add(Usuario obj);
 
     public void update(Object obj);
 

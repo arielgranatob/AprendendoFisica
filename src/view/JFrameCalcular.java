@@ -105,6 +105,7 @@ public class JFrameCalcular extends javax.swing.JFrame {
         btnSalvar = new javax.swing.JButton();
         btnRanking = new javax.swing.JButton();
         bntAdicionaPonto = new javax.swing.JButton();
+        btnAbrir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -181,7 +182,7 @@ public class JFrameCalcular extends javax.swing.JFrame {
                                 .addComponent(txtTempoVoo)
                                 .addComponent(txtAlturaMax))
                             .addComponent(txtDistancia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         painelLayout.setVerticalGroup(
             painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,10 +224,17 @@ public class JFrameCalcular extends javax.swing.JFrame {
             }
         });
 
-        bntAdicionaPonto.setText("GANHEI");
+        bntAdicionaPonto.setText("Inserir");
         bntAdicionaPonto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bntAdicionaPontoActionPerformed(evt);
+            }
+        });
+
+        btnAbrir.setText("Abrir");
+        btnAbrir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAbrirActionPerformed(evt);
             }
         });
 
@@ -235,28 +243,29 @@ public class JFrameCalcular extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblVel)
-                                .addGap(23, 23, 23)
-                                .addComponent(edtVel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                                .addComponent(lblAngulo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(edtAngulo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(painel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(142, 142, 142)
+                        .addComponent(lblVel)
+                        .addGap(23, 23, 23)
+                        .addComponent(edtVel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                        .addComponent(lblAngulo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(edtAngulo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(painel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnCalcular)
                         .addGap(18, 18, 18)
                         .addComponent(btnSalvar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAbrir)
+                        .addGap(18, 18, 18)
                         .addComponent(bntAdicionaPonto)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRanking)))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnRanking)
+                        .addGap(9, 9, 9)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -273,7 +282,8 @@ public class JFrameCalcular extends javax.swing.JFrame {
                     .addComponent(btnCalcular)
                     .addComponent(btnSalvar)
                     .addComponent(btnRanking)
-                    .addComponent(bntAdicionaPonto))
+                    .addComponent(bntAdicionaPonto)
+                    .addComponent(btnAbrir))
                 .addGap(18, 18, 18)
                 .addComponent(painel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -306,6 +316,7 @@ public class JFrameCalcular extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
 
+        this.lstCoordenadas.clear();
         for (double i = 0.0; i <= this.tempo; i += 0.001) {
 
             this.x = this.calculo.posicaoEmX(i);
@@ -317,7 +328,7 @@ public class JFrameCalcular extends javax.swing.JFrame {
             c.setTempo(i);
 
             this.lstCoordenadas.add(c);
-            System.out.println("x = " + this.x + "\ty = " + this.y + "\ttempo = " + i);
+//            System.out.println("x = " + this.x + "\ty = " + this.y + "\ttempo = " + i);
         }
         this.salvarArquivo("src/persistencia/lst_coordenadas.csv");
     }//GEN-LAST:event_btnSalvarActionPerformed
@@ -333,6 +344,18 @@ public class JFrameCalcular extends javax.swing.JFrame {
         Usuario usuario = new Usuario();
         usuariodao.update(usuario);
     }//GEN-LAST:event_bntAdicionaPontoActionPerformed
+
+    private void btnAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirActionPerformed
+        try {
+
+            String comando = "libreoffice --calc src/persistencia/lst_coordenadas.csv";
+            Runtime.getRuntime().exec(comando);
+
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Não foi possível abrir o arquivo");
+            System.out.println("Erro ao abrir:\n" + ex.getMessage());
+        }
+    }//GEN-LAST:event_btnAbrirActionPerformed
 
     public void salvarArquivo(String caminho) {
         try {
@@ -358,6 +381,7 @@ public class JFrameCalcular extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntAdicionaPonto;
+    private javax.swing.JButton btnAbrir;
     private javax.swing.JButton btnCalcular;
     private javax.swing.JButton btnRanking;
     private javax.swing.JButton btnSalvar;

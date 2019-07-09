@@ -12,10 +12,11 @@ public class Conexao {
         String password = "7jarcuvCh1iO";
         String url = "jdbc:mysql://arielgranato.com.br:3306/arielgranato_AprendendoFisica";
         String driver = "com.mysql.jdbc.Driver";
-        // String driver = "org.mariadb.jdbc.Driver";
+//        String driver = "org.mariadb.jdbc.Driver";
 
         try {
             Class.forName(driver);
+            System.out.println("oi");
             conn = DriverManager.getConnection(url, userName, password);
         } catch (Exception e) {
             e.printStackTrace();

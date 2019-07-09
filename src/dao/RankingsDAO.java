@@ -14,7 +14,7 @@ public class RankingsDAO implements InterfaceDAO {
     private Connection conn;
 
     @Override
-    public void add(Object obj) {
+    public void add(Usuario obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

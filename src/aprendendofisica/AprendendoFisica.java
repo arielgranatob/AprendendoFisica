@@ -1,7 +1,7 @@
-package AprendendoFisica;
+package aprendendofisica;
 
-import View.JFrameLogin;
-import view.JFrmRanking;
+import view.JFrameCalcular;
+import view.JFrameLogin;
 
 /**
  * Projeto Aprendendo Física. Aplicação com o objetivo de representar uma
@@ -17,6 +17,8 @@ public class AprendendoFisica {
         JFrameLogin Login = new JFrameLogin();
         Login.setVisible(true);
 
+//        JFrameCalcular view = new JFrameCalcular();
+//        view.setVisible(true);
     }
 
 }

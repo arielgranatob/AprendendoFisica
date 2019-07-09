@@ -1,6 +1,5 @@
 package dao;
 
-import dao.Conexao;
 import model.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,14 +8,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import view.JFrameCalcular;
-import static view.JFrameCalcular.lerSessao;
 
 public class UsuariosDAO implements InterfaceDAO {
 
     private String sql;
     private Connection conn;
 
-    public void add(Object obj) {
+    @Override
+    public void add(Usuario obj) {
         try {
 
             Usuario usuario = (Usuario) obj;
@@ -38,23 +37,24 @@ public class UsuariosDAO implements InterfaceDAO {
         }
     }
 
+    @Override
     public ArrayList consulta(String sql) {
         ArrayList<Usuario> arrayUsuarios = new ArrayList();
         try {
             conn = Conexao.conexao();
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.executeQuery();
-            ResultSet rs = stmt.getResultSet();
 
-            while (rs.next()) {
-                Usuario usuario = new Usuario();
-                usuario.setId(rs.getInt("idUsuario"));
-                usuario.setNome(rs.getString("nomeUsuario"));
-                usuario.setEmail(rs.getString("emailUsuario"));
-                usuario.setSenha(rs.getString("senhaUsuario"));
-                arrayUsuarios.add(usuario);
+            try (ResultSet rs = stmt.getResultSet()) {
+                while (rs.next()) {
+                    Usuario usuario = new Usuario();
+                    usuario.setId(rs.getInt("idUsuario"));
+                    usuario.setNome(rs.getString("nomeUsuario"));
+                    usuario.setEmail(rs.getString("emailUsuario"));
+                    usuario.setSenha(rs.getString("senhaUsuario"));
+                    arrayUsuarios.add(usuario);
+                }
             }
-            rs.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
@@ -63,7 +63,7 @@ public class UsuariosDAO implements InterfaceDAO {
 
     @Override
     public void update(Object obj) {
-        try {            
+        try {
             int pontos = 10;
             Usuario usuario = (Usuario) obj;
             sql = "UPDATE usuario SET pontuacaoUsuario = pontuacaoUsuario+?  WHERE idUsuario = ?";
@@ -73,7 +73,7 @@ public class UsuariosDAO implements InterfaceDAO {
             stmt.setString(1, String.valueOf(pontos));
             stmt.setString(2, JFrameCalcular.lerSessao());
             stmt.execute();
-            JOptionPane.showMessageDialog(null, "O ID "+JFrameCalcular.lerSessao()+" ganhou "+pontos+"!");
+            JOptionPane.showMessageDialog(null, "O ID " + JFrameCalcular.lerSessao() + " ganhou " + pontos + "!");
 
         } catch (SQLException error) {
             JOptionPane.showMessageDialog(null, "IMPOSSÍVEL EXECUTAR O COMANDO SQL\n" + error);

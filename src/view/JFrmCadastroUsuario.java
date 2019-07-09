@@ -27,7 +27,7 @@ public class JFrmCadastroUsuario extends javax.swing.JFrame {
         jTextFieldNomeCompleto = new javax.swing.JTextField();
         jTextFieldEmail = new javax.swing.JTextField();
         jButtonCadastrar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButtonCancelar = new javax.swing.JButton();
         jPasswordFieldSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -54,10 +54,10 @@ public class JFrmCadastroUsuario extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("CANCELAR");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCancelar.setText("CANCELAR");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonCancelarActionPerformed(evt);
             }
         });
 
@@ -75,7 +75,7 @@ public class JFrmCadastroUsuario extends javax.swing.JFrame {
                             .addGap(142, 142, 142)
                             .addComponent(jButtonCadastrar)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                            .addComponent(jButton2))
+                            .addComponent(jButtonCancelar))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addGap(104, 104, 104)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -109,7 +109,7 @@ public class JFrmCadastroUsuario extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonCadastrar)
-                    .addComponent(jButton2))
+                    .addComponent(jButtonCancelar))
                 .addContainerGap(60, Short.MAX_VALUE))
         );
 
@@ -134,67 +134,20 @@ public class JFrmCadastroUsuario extends javax.swing.JFrame {
 
         UsuariosDAO usuariodao = new UsuariosDAO();
         usuariodao.add(usuario);
-        View.JFrameLogin Login = new View.JFrameLogin();
+
+        JFrameLogin Login = new JFrameLogin();
         Login.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        View.JFrameLogin Login = new View.JFrameLogin();
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+        JFrameLogin Login = new JFrameLogin();
         Login.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFrmCadastroUsuario.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFrmCadastroUsuario.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFrmCadastroUsuario.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFrmCadastroUsuario.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new JFrmCadastroUsuario().setVisible(true);
-
-            }
-        });
-    }
-
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonCadastrar;
+    private javax.swing.JButton jButtonCancelar;
     private javax.swing.JLabel jLabelCpf;
     private javax.swing.JLabel jLabelDataNasc;
     private javax.swing.JLabel jLabelNome;

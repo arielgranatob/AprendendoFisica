@@ -1,16 +1,12 @@
-package View;
+package view;
 
 import dao.LoginDAO;
-import dao.RankingsDAO;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-import model.Usuario;
 
 public class JFrameLogin extends javax.swing.JFrame {
 
@@ -36,7 +32,7 @@ public class JFrameLogin extends javax.swing.JFrame {
             }
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -46,7 +42,7 @@ public class JFrameLogin extends javax.swing.JFrame {
         jLabelLogin = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jButtonEntrar = new javax.swing.JButton();
-        jButtonCancelar = new javax.swing.JButton();
+        jButtonCriarConta = new javax.swing.JButton();
         jTextFieldLogin = new javax.swing.JTextField();
         jPasswordFieldSenha = new javax.swing.JPasswordField();
 
@@ -71,10 +67,10 @@ public class JFrameLogin extends javax.swing.JFrame {
             }
         });
 
-        jButtonCancelar.setText("CRIAR CONTA");
-        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCriarConta.setText("CRIAR CONTA");
+        jButtonCriarConta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancelarActionPerformed(evt);
+                jButtonCriarContaActionPerformed(evt);
             }
         });
 
@@ -104,7 +100,7 @@ public class JFrameLogin extends javax.swing.JFrame {
                             .addGroup(jPanelLoginLayout.createSequentialGroup()
                                 .addComponent(jButtonEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButtonCancelar)))
+                                .addComponent(jButtonCriarConta)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -124,7 +120,7 @@ public class JFrameLogin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonEntrar)
-                    .addComponent(jButtonCancelar))
+                    .addComponent(jButtonCriarConta))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
@@ -145,11 +141,11 @@ public class JFrameLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-        view.JFrmCadastroUsuario CadastroUsuario = new view.JFrmCadastroUsuario();
+    private void jButtonCriarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCriarContaActionPerformed
+        JFrmCadastroUsuario CadastroUsuario = new JFrmCadastroUsuario();
         CadastroUsuario.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButtonCancelarActionPerformed
+    }//GEN-LAST:event_jButtonCriarContaActionPerformed
 
     private void jTextFieldLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldLoginActionPerformed
         // TODO add your handling code here:
@@ -168,10 +164,10 @@ public class JFrameLogin extends javax.swing.JFrame {
 
         switch (logar) {
             case 0:
-                JOptionPane.showMessageDialog(rootPane, "Email ou senha incorretos, por favor tente novamente ou realize seu cadastro!", "", 1);
+                JOptionPane.showMessageDialog(this, "Email ou senha incorretos, por favor tente novamente ou realize seu cadastro!", "", 1);
                 break;
-            case 1:
-                salvarSessao(usuario);
+            default:
+                salvarSessao(Integer.toString(logar));
                 view.JFrameCalcular Calcular = new view.JFrameCalcular();
                 Calcular.setVisible(true);
                 this.dispose();
@@ -179,45 +175,8 @@ public class JFrameLogin extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButtonEntrarActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFrameLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFrameLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFrameLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFrameLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new JFrameLogin().setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonCriarConta;
     private javax.swing.JButton jButtonEntrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelLogin;
