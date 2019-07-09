@@ -2,25 +2,42 @@ package model;
 
 public class Usuario {
 
+    /**
+     * @return the pontuacao
+     */
+    public int getPontuacao() {
+        return pontuacao;
+    }
+
+    /**
+     * @param pontuacao the pontuacao to set
+     */
+    public void setPontuacao(int pontuacao) {
+        this.pontuacao = pontuacao;
+    }
+
     private int id;
     private String nome;
     private String email;
     private String senha;
+    private int pontuacao;
 
     public Usuario() {
 
     }
 
-    public Usuario(int id, String nome, String login, String senha) {
+    public Usuario(int id, String nome, String login, String senha, int pontuacao) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
+        this.pontuacao = pontuacao;
     }
 
     /**
      * @return the id
      */
+    
     public int getId() {
         return id;
     }

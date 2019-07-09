@@ -5,7 +5,6 @@
  */
 package view;
 
-import java.awt.List;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -33,7 +32,6 @@ public class JFrameCalcular extends javax.swing.JFrame {
         this.x = 0.0;
         this.y = 0.0;
         this.lstCoordenadas = new ArrayList<>();
-
     }
 
     public ArrayList<Coordenadas> getLstCoordenadas() {
@@ -81,6 +79,7 @@ public class JFrameCalcular extends javax.swing.JFrame {
         txtDistancia = new javax.swing.JTextField();
         txtAlturaMax = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
+        btnRanking = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -192,29 +191,39 @@ public class JFrameCalcular extends javax.swing.JFrame {
             }
         });
 
+        btnRanking.setText("Ranking");
+        btnRanking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRankingActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblVel)
-                        .addGap(23, 23, 23)
-                        .addComponent(edtVel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                        .addComponent(lblAngulo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(edtAngulo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(painel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblVel)
+                                .addGap(23, 23, 23)
+                                .addComponent(edtVel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                                .addComponent(lblAngulo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(edtAngulo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(painel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(142, 142, 142)
+                        .addComponent(btnCalcular)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSalvar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRanking)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(142, 142, 142)
-                .addComponent(btnCalcular)
-                .addGap(18, 18, 18)
-                .addComponent(btnSalvar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,7 +237,8 @@ public class JFrameCalcular extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCalcular)
-                    .addComponent(btnSalvar))
+                    .addComponent(btnSalvar)
+                    .addComponent(btnRanking))
                 .addGap(18, 18, 18)
                 .addComponent(painel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -277,6 +287,12 @@ public class JFrameCalcular extends javax.swing.JFrame {
         this.salvarArquivo("src/persistencia/lst_coordenadas.csv");
     }//GEN-LAST:event_btnSalvarActionPerformed
 
+    private void btnRankingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRankingActionPerformed
+        JFrmRanking Ranking = new JFrmRanking();
+        Ranking.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnRankingActionPerformed
+
     public void salvarArquivo(String caminho) {
 
         try {
@@ -303,6 +319,7 @@ public class JFrameCalcular extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalcular;
+    private javax.swing.JButton btnRanking;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JTextField edtAngulo;
     private javax.swing.JTextField edtVel;
