@@ -170,8 +170,8 @@ public class JFrameLogin extends javax.swing.JFrame {
             case 0:
                 JOptionPane.showMessageDialog(rootPane, "Email ou senha incorretos, por favor tente novamente ou realize seu cadastro!", "", 1);
                 break;
-            case 1:
-                salvarSessao(usuario);
+            default:
+                salvarSessao(String.valueOf(logar));
                 view.JFrameCalcular Calcular = new view.JFrameCalcular();
                 Calcular.setVisible(true);
                 this.dispose();

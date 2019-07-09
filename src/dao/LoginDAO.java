@@ -21,7 +21,7 @@ public class LoginDAO {
             stmt.setString(2, senha);
             ResultSet rs = stmt.executeQuery();
             if (rs.first()) {
-                logou = 1;
+                logou = (rs.getInt("idUsuario"));
             }
             rs.close();
         } catch (SQLException ex) {
