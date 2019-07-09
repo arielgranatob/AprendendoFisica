@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import view.JFrameCalcular;
+import static view.JFrameCalcular.lerSessao;
 
 public class UsuariosDAO implements InterfaceDAO {
 
@@ -39,7 +41,6 @@ public class UsuariosDAO implements InterfaceDAO {
     public ArrayList consulta(String sql) {
         ArrayList<Usuario> arrayUsuarios = new ArrayList();
         try {
-
             conn = Conexao.conexao();
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.executeQuery();
@@ -62,7 +63,20 @@ public class UsuariosDAO implements InterfaceDAO {
 
     @Override
     public void update(Object obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            Usuario usuario = (Usuario) obj;
+            sql = "UPDATE usuario SET pontuacaoUsuario = ?  WHERE idUsuario = ?";
+            conn = Conexao.conexao();
+            PreparedStatement stmt;
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, "5");
+            stmt.setString(2, JFrameCalcular.lerSessao());
+            stmt.execute();
+            JOptionPane.showMessageDialog(null, "Adicionado 5 pontos ao ID "+JFrameCalcular.lerSessao()+" com sucesso!");
+
+        } catch (SQLException error) {
+            JOptionPane.showMessageDialog(null, "IMPOSSÍVEL EXECUTAR O COMANDO SQL\n" + error);
+        }
     }
 
     @Override

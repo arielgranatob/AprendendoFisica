@@ -1,7 +1,16 @@
 package View;
 
 import dao.LoginDAO;
+import dao.RankingsDAO;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.Usuario;
 
 public class JFrameLogin extends javax.swing.JFrame {
 
@@ -10,6 +19,24 @@ public class JFrameLogin extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
+    public void salvarSessao(String idUsuario) {
+        FileWriter arq = null;
+        try {
+            arq = new FileWriter("src/persistencia/logado.txt");
+        } catch (IOException ex) {
+            Logger.getLogger(JFrameLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        PrintWriter gravarArq = new PrintWriter(arq);
+        gravarArq.printf(idUsuario);
+        {
+            try {
+                arq.close();
+            } catch (IOException ex) {
+                Logger.getLogger(JFrameLogin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -144,6 +171,7 @@ public class JFrameLogin extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Email ou senha incorretos, por favor tente novamente ou realize seu cadastro!", "", 1);
                 break;
             case 1:
+                salvarSessao(usuario);
                 view.JFrameCalcular Calcular = new view.JFrameCalcular();
                 Calcular.setVisible(true);
                 this.dispose();

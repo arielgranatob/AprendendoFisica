@@ -5,6 +5,9 @@
  */
 package view;
 
+import dao.UsuariosDAO;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,6 +17,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.Calculos;
 import model.Coordenadas;
+import model.Usuario;
 
 /**
  *
@@ -32,6 +36,26 @@ public class JFrameCalcular extends javax.swing.JFrame {
         this.x = 0.0;
         this.y = 0.0;
         this.lstCoordenadas = new ArrayList<>();
+    }
+
+    static public String lerSessao() {
+        String idSalvo = "-1";
+        try {
+            FileReader arq;
+            arq = new FileReader("src/persistencia/logado.txt");
+            BufferedReader lerArq = new BufferedReader(arq);
+
+            String linha = lerArq.readLine();
+            while (linha != null) {
+                idSalvo = linha;
+                linha = lerArq.readLine();
+            }
+            arq.close();
+        } catch (IOException e) {
+            System.err.printf("Erro na abertura do arquivo: %s.\n",
+                    e.getMessage());
+        }
+        return idSalvo;
     }
 
     public ArrayList<Coordenadas> getLstCoordenadas() {
@@ -80,6 +104,7 @@ public class JFrameCalcular extends javax.swing.JFrame {
         txtAlturaMax = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
         btnRanking = new javax.swing.JButton();
+        bntAdicionaPonto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -198,6 +223,13 @@ public class JFrameCalcular extends javax.swing.JFrame {
             }
         });
 
+        bntAdicionaPonto.setText("+");
+        bntAdicionaPonto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntAdicionaPontoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -222,6 +254,8 @@ public class JFrameCalcular extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnSalvar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bntAdicionaPonto)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnRanking)))
                 .addContainerGap())
         );
@@ -238,7 +272,8 @@ public class JFrameCalcular extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCalcular)
                     .addComponent(btnSalvar)
-                    .addComponent(btnRanking))
+                    .addComponent(btnRanking)
+                    .addComponent(bntAdicionaPonto))
                 .addGap(18, 18, 18)
                 .addComponent(painel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -293,10 +328,14 @@ public class JFrameCalcular extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnRankingActionPerformed
 
+    private void bntAdicionaPontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntAdicionaPontoActionPerformed
+        UsuariosDAO usuariodao = new UsuariosDAO();
+        Usuario usuario = new Usuario();
+        usuariodao.update(usuario);
+    }//GEN-LAST:event_bntAdicionaPontoActionPerformed
+
     public void salvarArquivo(String caminho) {
-
         try {
-
             FileWriter arquivo = new FileWriter(caminho);
             PrintWriter escrita = new PrintWriter(arquivo);
 
@@ -318,6 +357,7 @@ public class JFrameCalcular extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bntAdicionaPonto;
     private javax.swing.JButton btnCalcular;
     private javax.swing.JButton btnRanking;
     private javax.swing.JButton btnSalvar;

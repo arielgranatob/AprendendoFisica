@@ -46,6 +46,8 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnSalvar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
+                      <Component id="bntAdicionaPonto" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnRanking" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -68,6 +70,7 @@
                   <Component id="btnCalcular" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnRanking" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bntAdicionaPonto" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="painel" max="32767" attributes="0"/>
@@ -287,6 +290,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRankingActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bntAdicionaPonto">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="+"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntAdicionaPontoActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
